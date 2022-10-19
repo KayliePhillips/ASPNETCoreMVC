@@ -16,5 +16,10 @@ namespace ASPNETCoreMVC
         {
             return _conn.Query<Product>("SELECT * FROM Products;");
         }
+
+        public Product GetProduct(int id)
+        {
+            return _conn.QuerySingle<Product>("SELECT * FROM Products WHERE ProductID = @id ;", new {id = id});
+        }
     }
 }
