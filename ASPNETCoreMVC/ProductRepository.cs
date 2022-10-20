@@ -48,5 +48,13 @@ namespace ASPNETCoreMVC
             return product;
         }
 
+        public void DeleteProduct(Product productToDelete)
+        {
+            _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id;", new {id=productToDelete.ProductID});
+            _conn.Execute("DELETE FROM Sales WHERE ProductID = @id;", new { id = productToDelete.ProductID });
+            _conn.Execute("DELETE FROM Products WHERE ProductID = @id;", new { id = productToDelete.ProductID });
+        }
+
+         
     }
 }

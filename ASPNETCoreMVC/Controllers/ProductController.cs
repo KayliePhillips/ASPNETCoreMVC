@@ -42,7 +42,6 @@ namespace ASPNETCoreMVC.Controllers
         public IActionResult UpdateProductToDatabase(Product product)
         {
             repo.UpdateProduct(product);
-
             return RedirectToAction("ViewProduct", new { id = product.ProductID });
         }
 
@@ -55,6 +54,12 @@ namespace ASPNETCoreMVC.Controllers
         public IActionResult InsertProductToDatabase(Product productToInsert)
         {
             repo.InsertProduct(productToInsert);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteProduct(Product productToDelete)
+        {
+            repo.DeleteProduct(productToDelete);
             return RedirectToAction("Index");
         }
     }
